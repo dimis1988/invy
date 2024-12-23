@@ -255,8 +255,6 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.3.2)
-    selenium-devtools (0.130.0)
-      selenium-webdriver (~> 4.2)
     selenium-webdriver (4.26.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -318,7 +316,6 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails
   sassc-rails
-  selenium-devtools
   selenium-webdriver
   shoulda-matchers
   sprockets-rails
