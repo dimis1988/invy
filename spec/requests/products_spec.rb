@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Products", type: :request do
-  
-  let!(:product) { create(:product) }
+  let!(:product_category) { create(:product_category, name: 'Clothes') }
+  let!(:product) { create(:product, product_category_id: product_category.id) }
 
   let(:valid_attributes) do
-    { sku: "123456", name: "Test Product" } 
+    { sku: "123456", name: "Test Product", product_category_id: product_category.id} 
   end
 
   let(:invalid_attributes) do
-    { sku: "123456", name: "" } 
+    { sku: "123456", name: "" ,product_category_id: "" } 
   end
 
   describe "GET /index" do

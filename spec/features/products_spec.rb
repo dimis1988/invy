@@ -7,7 +7,9 @@ RSpec.feature "Products", type: :feature do
   end
 
   it 'creates product' do 
+    product_category = create(:product_category, name: 'Clothes')
     visit(new_product_path)
+    select(product_category.name, from: 'Category')
     fill_in('Sku', with: '000001')
     fill_in('Name', with: 'product')
     fill_in('Description', with: 'product_one')
@@ -16,11 +18,14 @@ RSpec.feature "Products", type: :feature do
   end
 
   describe 'updates/delete existing product' do
+    let!(:product_category) { create(:product_category, name: 'Clothes') }
     before(:each) do
-      @product = Product.create!(sku: "123456", name: "Old Product", description: "Old description")
+      @product = Product.create!(sku: "123456", name: "Old Product", 
+      description: "Old description", product_category_id: product_category.id)
     end
     it 'updates product' do 
       visit(edit_product_path(@product))
+      expect(@product.product_category.name).to eq('Clothes')
       fill_in('Sku', with: '000001')
       fill_in('Name', with: 'product')
       fill_in('Description', with: 'product_one')
