@@ -1,0 +1,10 @@
+<p class="notice"><%= notice %></p>
+
+
+<h1>Category <%= @product_category.id %></h1>
+
+<p><%= @product_category.sku %></p>
+<p><%= @product_category.name %></p>
+<p><%= @product_category.description %></p>
+
+<%= link_to 'Back to Categories', product_categories_path %>
